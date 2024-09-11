@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYMENT_ROOT=/home/inextwebs/public_html/newlms.inextwebs.com
+    - /bin/cp -r $DEPLOYMENT_SOURCE/* $DEPLOYMENT_ROOT
+    - /usr/local/bin/php $DEPLOYMENT_ROOT/artisan migrate --force
+    - /usr/local/bin/php $DEPLOYMENT_ROOT/artisan cache:clear
+    - /usr/local/bin/php $DEPLOYMENT_ROOT/artisan config:clear
+    - /usr/local/bin/php $DEPLOYMENT_ROOT/artisan route:clear
+    - /usr/local/bin/php $DEPLOYMENT_ROOT/artisan view:clear

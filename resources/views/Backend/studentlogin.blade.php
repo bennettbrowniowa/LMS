@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{Config('app.name')}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{{url('assets/backend/plugin/bootstrap/bootstrap.min.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{url('assets/backend/plugin/font-awesome/css/font-awesome.min.css')}}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{url('assets/backend/plugin/Ionicons/css/ionicons.min.css')}}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{url('assets/backend/css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/backend/plugin/select2/dist/css/select2.css')}}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{url('assets/backend/plugin/iCheck/square/blue.css')}}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="{{url('assets/backend/font/style.css')}}">
+    <style>
+        .google-inner-btn1 {
+            border: 1px solid #cbcbcb;
+            width: 100%;
+            padding: 7px;
+            border-radius: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-inner-img {
+            width: 30px;
+        }
+        .google-btn-div-p {
+            color: black;
+            font-size: 15px;
+            padding: 0 10px;
+            margin: 0;
+        }
+        .btn-black-bg{
+            background-color: black;
+            width: 100%;
+            padding: 7px;
+            border-radius: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .google-btn-div-p2 {
+            color: white;
+            padding: 0 5px;
+            margin: 0;
+        }
+        .admin_select {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 15px;
+            border-radius: 0;
+            box-shadow: none;
+            border-color: #f6f8f9;
+            background-color: #f6f8f9;
+            border: 1px solid #f6f8f9 !important;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="hold-transition login-page" @if($data->showImage_Background=='Yes') style="background: url('{{asset('uploads/generalSetting/'.$data->signIn_backgroundImage)}}'); background-size: cover; display: inline;" @endif>
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <div class="login-logo">
+            @if($data->showLogo_inSign=='Yes')
+                <a href="{{route('login')}}">
+                    <img src="{{asset('uploads/generalSetting/'.$data->site_logo)}}" style="max-width: 100%;max-height: 100px;">
+                </a>
+            @endif
+        </div>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">{{ Session::get('success') }}</div>
+        @endif
+        @if (Session::has('info'))
+            <div class="alert alert-info">{{ Session::get('info') }}</div>
+        @endif
+        @if (Session::has('warning'))
+            <div class="alert alert-warning">{{ Session::get('warning') }}</div>
+        @endif
+        @if (Session::has('error'))
+            <div class="alert alert-danger">{{ Session::get('error') }}</div>
+        @endif
+
+        <form action="@if(isset($_GET['next'])) {{route('login_student',['next'=>$_GET['next']])}} @else {{route('login_student')}} @endif" method="post" autocomplete="off">
+            {{csrf_field()}}
+            <input type="hidden" name="invitation_token" value="{{ request()->query('invitation_token') }}">
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="off">
+            </div>
+            <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+                </div>
+            </div>
+
+        </form>
+        <a href="{{route('forgot')}}">I forgot my password</a><br>
+        <p class="text-center mt-3 mb-2">Or,</p>
+        <div class="google-btn-div">
+            <a id="load-button-google" href="{{url('/auth/student/google')}}" class="btn login-btn-inner-1 " style="display: block">
+                <div class="google-inner-btn1" >
+                    <img src="{{url('/')}}/uploads/profilePhoto/google.png" class="login-inner-img">
+                    <p class="google-btn-div-p"><b>Log in with Google</b></p>
+                </div>
+            </a>
+            <br>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<script src="{{url('assets/backend/plugin/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{url('assets/backend/plugin/bootstrap/bootstrap.min.js')}}"></script>
+<!-- iCheck -->
+<script src="{{url('assets/backend/plugin/iCheck/icheck.min.js')}}"></script>
+<script src="{{url('assets/backend/plugin/select2/dist/js/select2.full.min.js')}}"></script>
+<script>
+    $("#show_hide").hide();
+
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%'
+        });
+
+
+    });
+
+
+</script>
+</body>
+</html>
+

@@ -1,8 +1,6 @@
 @extends('Backend.main')
 @section('content')
     <div class="content-wrapper">
-        panakaj mishra how ru
-
         <section class="content">
 
             @if (count($errors) > 0)

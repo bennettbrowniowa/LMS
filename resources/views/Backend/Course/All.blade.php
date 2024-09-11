@@ -1,7 +1,7 @@
 @extends('Backend.main')
 @section('content')
     <div class="content-wrapper">
-        panakaj mishra how are u doing
+        panakaj mishra
 
         <section class="content">
 

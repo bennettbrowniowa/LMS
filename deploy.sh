@@ -7,7 +7,7 @@ cd /home/inextwebs/public_html/newlms.inextwebs.com || { echo "Failed to change 
 git config pull.rebase false  # or true based on your preference
 
 # Pull the latest changes from Git
-git pull origin master || { echo "Git pull failed"; exit 1; }
+git pull origin main || { echo "Git pull failed"; exit 1; }
 
 # Run migrations if needed
 php artisan migrate --force || { echo "Migrations failed"; exit 1; }

@@ -20,6 +20,7 @@ use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class CourseController extends Controller
 {
+    ///pankaj
     public function index(){
         return view('Backend.Course.All');
     }

@@ -3,6 +3,9 @@
 # Navigate to your project directory
 cd /home/inextwebs/public_html/newlms.inextwebs.com || { echo "Failed to change directory"; exit 1; }
 
+# Set correct file permissions for deploy.sh itself
+chmod 755 /home/inextwebs/public_html/newlms.inextwebs.com/deploy.sh || { echo "Failed to set deploy.sh permissions"; exit 1; }
+
 # Configure Git to handle divergent branches
 git config pull.rebase false  # or true based on your preference
 
@@ -17,12 +20,7 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
-# Temporarily disable cache commands to avoid closure issues, uncomment once fixed
-# php artisan config:cache || { echo "Config cache failed"; exit 1; }
-# php artisan route:cache || { echo "Route cache failed"; exit 1; }
-# php artisan view:cache || { echo "View cache failed"; exit 1; }
-
-# Set proper file permissions (adjust as necessary)
+# Set proper file permissions for the project
 chown -R inextwebs:inextwebs /home/inextwebs/public_html/newlms.inextwebs.com || { echo "Chown failed"; exit 1; }
 
 echo "Deployment completed successfully"

@@ -224,7 +224,7 @@ class InstructorController extends Controller
         $students = User::whereHas('roles', function($query) {
             $query->where('name', 'Student');
         })->where('instructor_id', Auth::user()['id'])->get();
-        
+
         return view('Backend.Instructor.courseenroll', compact('course', 'students'));
 
 
@@ -475,7 +475,7 @@ public function success_msg()
             }
             else{
                 User::where('id',$id)->update(['is_blocked'=>0]);
-                //  UserHelper::sent_email($user_item->email,'Account Activation','Your Account Activated By Admin Now You can Login !!');
+                  UserHelper::sent_email($user_item->email,'Account Activation','Your Account Activated By Admin Now You can Login !!');
 
                 Mail::to($user_item->email)->send(new AccountActivationMail($user_item));
 

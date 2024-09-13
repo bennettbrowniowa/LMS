@@ -102,7 +102,7 @@
                 <a href="{{route('lockedLogout')}}" class="btn btn-flat btn-default">Logout</a>
             </div>
             <div class="lockscreen-footer text-center">
-                Copyright &copy; 2017-{{date('Y')}} <b><a href="{{route('locked')}}" class="text-black">{{$CompanyDetails->company_name}}</a></b><br>
+                Copyright &copy; {{date('Y')}} <b><a href="{{route('locked')}}" class="text-black">{{$CompanyDetails->company_name}}</a></b><br>
                 All rights reserved
             </div>
         </div>

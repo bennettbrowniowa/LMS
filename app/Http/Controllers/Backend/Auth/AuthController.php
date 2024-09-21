@@ -295,7 +295,6 @@ class AuthController extends Controller
             Session::put('UserImage',eAuth::user()->profile_photo['name']);
 
             eAuth::logout();
-
             $GeneralSetting = GeneralSetting::first();
             $CompanySetting = CompanySetting::select('company_name')->first();
             return view('Backend.studentlocked',['data'=>$GeneralSetting,'CompanyDetails'=>$CompanySetting]);

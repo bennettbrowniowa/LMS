@@ -94,31 +94,33 @@
                     <label class="control-label">Content Type<span class="requiredAsterisk">*</span></label>
                 </div>
                 <div class="col-sm-8">
-                    <label class="radio-inline">
-                        <div class="html_input_div">
-                            <input type="radio" name="content_type" class="html_input" value="html"> <span class="html_input_span">HTML</span>
-                        </div>
-                    </label>
-                    <label class="radio-inline">
-                        <div class="html_input_div">
-                            <input type="radio" name="content_type" class="html_input" value="txt"> <span class="html_input_span">TXT</span>
-                        </div>
-                    </label>
-                    <label class="radio-inline">
-                        <div class="html_input_div">
-                            <input type="radio" name="content_type" class="html_input" value="js"> <span class="html_input_span">JS</span>
-                        </div>
-                    </label>
-                    <label class="radio-inline">
-                        <div class="html_input_div">
-                            <input type="radio" name="content_type" class="html_input" value="md"> <span class="html_input_span">MD</span>
-                        </div>
-                    </label>
-                    <label class="radio-inline">
-                        <div class="html_input_div">
-                            <input type="radio" name="content_type" class="html_input" value="qti"> <span class="html_input_span">QTI</span>
-                        </div>
-                    </label>
+                    <div class="validate[required]" id="contentTypeGroup">
+                        <label class="radio-inline">
+                            <div class="html_input_div">
+                                <input type="radio" name="content_type" class="html_input" value="html"> <span class="html_input_span">HTML</span>
+                            </div>
+                        </label>
+                        <label class="radio-inline">
+                            <div class="html_input_div">
+                                <input type="radio" name="content_type" class="html_input" value="txt"> <span class="html_input_span">TXT</span>
+                            </div>
+                        </label>
+                        <label class="radio-inline">
+                            <div class="html_input_div">
+                                <input type="radio" name="content_type" class="html_input" value="js"> <span class="html_input_span">JS</span>
+                            </div>
+                        </label>
+                        <label class="radio-inline">
+                            <div class="html_input_div">
+                                <input type="radio" name="content_type" class="html_input" value="md"> <span class="html_input_span">MD</span>
+                            </div>
+                        </label>
+                        <label class="radio-inline">
+                            <div class="html_input_div">
+                                <input type="radio" name="content_type" class="html_input" value="qti"> <span class="html_input_span">QTI</span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -311,7 +313,6 @@
                 document.getElementById('contentContainer').innerHTML = outputHtml;
             } catch (error) {
                 if (!itemBodyFound) {
-                    // toastr.error(error.message);
                     contentContainer.innerHTML = '';
                 }
             }

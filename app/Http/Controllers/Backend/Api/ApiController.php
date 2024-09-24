@@ -68,7 +68,7 @@ class ApiController extends Controller
                 'learning_sequences.id',
                 DB::raw('MAX(learning_sequences.title) as title'),
                 DB::raw('MAX(learning_sequences.description) as description'),
-                DB::raw('GROUP_CONCAT(goals.id) as parent_goal_ids'),
+//                DB::raw('GROUP_CONCAT(goals.id) as parent_goal_ids'),
                 DB::raw('GROUP_CONCAT(goals.title) as assigned_goals'),
                 DB::raw('GROUP_CONCAT(files.filename) as filenames'),
                 DB::raw('GROUP_CONCAT(files.url) as urls'),

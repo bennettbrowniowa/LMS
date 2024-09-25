@@ -182,7 +182,8 @@
 
                         if (response.length > 0) {
                             $.each(response, function(index, student) {
-                                enrolledStudentsHtml += '<div style="text-align: center;">' + student.name + '</div>';
+
+                                enrolledStudentsHtml += '<div style="text-align: center;">' + student.email + '</div>';
                             });
                         } else {
                             enrolledStudentsHtml = '<div style="text-align: center;">No students found for this course.</div>';

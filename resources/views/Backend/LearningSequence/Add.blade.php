@@ -209,10 +209,13 @@
                 $('#qtiFields').show();
                 $("#validation2").validationEngine({promptPosition: 'inline'});
                 $('#descriptionField').hide();
+                $('#contentTypeGroup').removeClass('validate[required]');
             } else {
                 $('#qtiFields').hide();
                 $("#validation2").validationEngine('detach');
                 $('#descriptionField').show();
+                $('#contentTypeGroup').removeClass('validate[required]');
+
             }
         });
 
@@ -598,6 +601,12 @@
             $(this).closest('.form-group').remove();
         });
     });
+
+
+
+
+
+
 
 
 
